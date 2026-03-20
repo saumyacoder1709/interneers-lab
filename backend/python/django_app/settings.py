@@ -128,3 +128,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+import mongoengine
+
+mongoengine.connect(
+    db='inventory_db',             # The name of the database we want to create inside MongoDB
+    host='127.0.0.1',              # This means "my local computer"
+    port=27019,                    # THE TUBE! The exact port from your company's docker-compose.yml
+    username='root',               # From the YAML environment variables
+    password='example',            # From the YAML environment variables
+    authentication_source='admin'  # Required by MongoDB when using the root user
+)
